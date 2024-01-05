@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-        <div v-for="product of props.products" class="bg-white rounded grid grid-cols-2 m-2 hover:shadow-xl transition-shadow duration-500">
+        <div v-for="product of props.products" class="bg-white rounded grid grid-cols-2 m-2 hover:shadow-xl transition-shadow duration-500 cursor-click">
             <div>
                 <img class="h-full"
                 :src="product.src"
@@ -29,5 +29,8 @@ const props = defineProps({
 </template>
 
 <style scoped>
+.cursor-click{
+    cursor: pointer;
+}
 </style>
 
