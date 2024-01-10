@@ -5,11 +5,19 @@ const props = defineProps({
     products: Array <Product>,
 });
 
+const emit = defineEmits(['changeShowModal'])
+
+const updateShowModalEmit = () => {
+    emit('changeShowModal', true)
+}
+
 
 </script>
 
 <template>
-        <div v-for="product of props.products" class="bg-white rounded grid grid-cols-2 m-2 hover:shadow-xl transition-shadow duration-500 cursor-click">
+        <div v-for="product of props.products" 
+        class="bg-white rounded grid grid-cols-2 m-2 hover:shadow-xl transition-shadow duration-500 cursor-click"
+        @click="updateShowModalEmit" >
             <div>
                 <img class="h-full"
                 :src="product.src"
