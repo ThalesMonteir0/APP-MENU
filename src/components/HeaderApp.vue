@@ -16,9 +16,11 @@
                 <span class="text-base font-medium text-gray-900 ml-3">{{props.isOpen ? "Aberto ​🟢" : "Fechado ​🔴​"}}​</span>
             </div>
             
-            <div class="flex items-center">
-                <span class="text-base font-medium">Entregar em</span>
+            <div class="flex items-center cursor-pointer">
+            
                 <img class="ml-9" src="src/assets/icons/cart.svg" alt="carrinho">
+                <span class="relative bottom-3" style="color: red;">1</span>
+
             </div>
 
         </div>

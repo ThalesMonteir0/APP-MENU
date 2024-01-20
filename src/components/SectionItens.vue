@@ -13,7 +13,7 @@ const productQuantity = ref(1)
 const openModal = ref(false)
 
 const decrementProductQuantity = () => {
-    if (productQuantity.value > 0 ){
+    if (productQuantity.value > 1 ){
         productQuantity.value--
     }
 }

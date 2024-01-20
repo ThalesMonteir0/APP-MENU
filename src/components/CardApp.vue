@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Product } from '../states/productsState.ts';
+import {formatNumberToStringCurrency} from './composables/useFormatString.ts'
 
 const props = defineProps({
     products: Array <Product>,
@@ -30,7 +31,7 @@ const updateShowModalEmit = () => {
                 <span>{{ product.description }}</span>
 
                 <span style="display: flex; -webkit-box-flex: 1; flex-grow: 1; align-items: flex-end; width: 100%; ">
-                    Por apenas: {{ product.price }}
+                    Por apenas: {{formatNumberToStringCurrency(product.price) }}
                 </span>
             </div>
         </div>

@@ -22,7 +22,7 @@ let productsObject = [
         <article class="w-full flex justify-center h-full mt-4">
             <section class="w-full h-full" style="max-width: 1200px;">
                 <SectionItens :SectionProduct="productsObject" title="HAMBURGUER" />
-                <SectionItens :SectionProduct="productsObject" title="SOBREMEAS" />
+                <SectionItens :SectionProduct="productsObject" title="SOBREMESAS" />
             </section>
         </article>
     </main>
