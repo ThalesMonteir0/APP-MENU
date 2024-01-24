@@ -19,7 +19,9 @@
             <div class="flex items-center cursor-pointer">
             
                 <img class="ml-9" src="src/assets/icons/cart.svg" alt="carrinho">
-                <span class="relative bottom-3" style="color: red;">1</span>
+                <div class="relative bottom-3 flex justify-center" style="border: black solid 1px; border-radius: 2rem;width: 2rem;background-color: black;">
+                    <span class="text-white">1</span>
+                </div>
 
             </div>
 

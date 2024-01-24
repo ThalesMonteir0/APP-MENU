@@ -3,25 +3,20 @@ import CardApp from './CardApp.vue';
 import {Product} from  '../states/productsState.ts';
 import { FwbModal, FwbButton } from 'flowbite-vue'
 import { ref } from 'vue';
+import {useCartStore} from '../stores/CartStore.ts'
 
 const props = defineProps({
     title: String,
     SectionProduct: Array<Product>
 })
 
-const productQuantity = ref(1) 
 const openModal = ref(false)
 
-const decrementProductQuantity = () => {
-    if (productQuantity.value > 1 ){
-        productQuantity.value--
-    }
-}
+const cart = useCartStore()
 
 const showModal = (emitValue: boolean) => {  
     openModal.value = emitValue
-    if (emitValue == false) productQuantity.value = 1
-
+    if (emitValue == false) cart.count = 1
 }
 
 
@@ -54,9 +49,9 @@ const showModal = (emitValue: boolean) => {
                             <div class="flex justify-end w-full h-full">
                                 <div class="flex items-end">
                                     <div class="btn-quantity mr-2">
-                                        <button @click="decrementProductQuantity" class="cursor-pointer">-</button>
-                                        <span>{{ productQuantity }}</span>
-                                        <button @click="productQuantity++" class="cursor-pointer">+</button>
+                                        <button @click="cart.decrement" class="cursor-pointer">-</button>
+                                        <span>{{ cart.count }}</span>
+                                        <button @click="cart.increment" class="cursor-pointer">+</button>
                                     </div>
                                     <fwb-button size="lg" color="green">Adicionar</fwb-button>
                                 </div>
