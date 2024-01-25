@@ -5,7 +5,7 @@ import SectionItens from './components/SectionItens.vue';
 
 let productsObject = [
     { title: 'Double burguer', price: 21.5, description: 'Delicioso hambuguer com 2 carnes, queijo e molho especial.', src: "https://www.estadao.com.br/resizer/YIBfPUoXUOKRYG7IVo-jptwsSFY=/720x503/filters:format(jpg):quality(80):focal(3070x2285:3080x2295)/cloudfront-us-east-1.images.arcpublishing.com/estadao/L3LYN5Y4MRG6BB47MNHEEXDRGA.jpeg" },
-    { title: 'Double burguer', price: 21.5, description: 'Delicioso hambuguer com 2 carnes, queijo e molho especial.', src: "https://www.estadao.com.br/resizer/YIBfPUoXUOKRYG7IVo-jptwsSFY=/720x503/filters:format(jpg):quality(80):focal(3070x2285:3080x2295)/cloudfront-us-east-1.images.arcpublishing.com/estadao/L3LYN5Y4MRG6BB47MNHEEXDRGA.jpeg" }
+    { title: 'Triple burguer', price: 25.5, description: 'Delicioso hambuguer com 3 carnes, queijo e molho especial.', src: "https://www.estadao.com.br/resizer/YIBfPUoXUOKRYG7IVo-jptwsSFY=/720x503/filters:format(jpg):quality(80):focal(3070x2285:3080x2295)/cloudfront-us-east-1.images.arcpublishing.com/estadao/L3LYN5Y4MRG6BB47MNHEEXDRGA.jpeg" }
 ]
 
 </script>

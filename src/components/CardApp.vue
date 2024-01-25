@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { Product } from '../states/productsState.ts';
 import {formatNumberToStringCurrency} from './composables/useFormatString.ts'
+import { useModalStore } from '../stores/ModalStore';
 
 const props = defineProps({
     products: Array <Product>,
 });
 
+const modal = useModalStore()
+
 const emit = defineEmits(['changeShowModal'])
 
-const updateShowModalEmit = () => {
+const updateShowModalEmit = (product: Product) => {
     emit('changeShowModal', true)
+    modal.product = product
 }
 
 
@@ -18,7 +22,7 @@ const updateShowModalEmit = () => {
 <template>
         <div v-for="product of props.products" 
         class="bg-white rounded grid grid-cols-2 m-2 hover:shadow-xl transition-shadow duration-500 cursor-click"
-        @click="updateShowModalEmit" >
+        @click="updateShowModalEmit(product)" >
             <div>
                 <img class="h-full"
                 :src="product.src"
