@@ -4,3 +4,8 @@ export type Product = {
     src: string
     price:number
 }
+
+export interface ProductCart extends Product {
+    amount: number
+    totalValue: number
+}

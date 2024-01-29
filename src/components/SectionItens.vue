@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CardApp from './CardApp.vue';
-import {Product} from  '../states/productsState.ts';
+import {Product, ProductCart} from  '../states/productsState.ts';
 import { FwbModal, FwbButton } from 'flowbite-vue'
 import { ref } from 'vue';
 import {useModalStore} from '../stores/ModalStore.ts'
@@ -17,6 +17,17 @@ const modal = useModalStore()
 const showModal = (emitValue: boolean) => {  
     openModal.value = emitValue
     if (emitValue == false) modal.count = 1
+}
+
+const addProductToCart = () => {
+    // let productCart: ProductCart = {
+    //     description: modal.product.description !== undefined ? modal.product.description: "",
+    //     title: 
+
+    // }
+
+
+
 }
 
 
@@ -53,7 +64,7 @@ const showModal = (emitValue: boolean) => {
                                         <span>{{ modal.count }}</span>
                                         <button @click="modal.increment" class="cursor-pointer">+</button>
                                     </div>
-                                    <fwb-button size="lg" color="green">Adicionar</fwb-button>
+                                    <fwb-button size="lg" color="green" @click="addProductToCart">Adicionar</fwb-button>
                                 </div>
 
                             </div>
