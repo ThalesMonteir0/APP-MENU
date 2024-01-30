@@ -5,7 +5,8 @@ export type Product = {
     price:number
 }
 
-export interface ProductCart extends Product {
-    amount: number
+export interface ProductCart {
+    title: string
+    quantity: number
     totalValue: number
 }

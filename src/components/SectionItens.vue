@@ -4,6 +4,7 @@ import {Product, ProductCart} from  '../states/productsState.ts';
 import { FwbModal, FwbButton } from 'flowbite-vue'
 import { ref } from 'vue';
 import {useModalStore} from '../stores/ModalStore.ts'
+import { useCartStore } from '../stores/CartStore';
 
 const props = defineProps({
     title: String,
@@ -11,8 +12,8 @@ const props = defineProps({
 })
 
 const openModal = ref(false)
-
 const modal = useModalStore()
+const cart = useCartStore()
 
 const showModal = (emitValue: boolean) => {  
     openModal.value = emitValue
@@ -20,14 +21,14 @@ const showModal = (emitValue: boolean) => {
 }
 
 const addProductToCart = () => {
-    // let productCart: ProductCart = {
-    //     description: modal.product.description !== undefined ? modal.product.description: "",
-    //     title: 
+    let totalvalue = modal.count * modal.product.price!
+    let productCart: ProductCart = {
+        title: modal.product.title != undefined ? modal.product.title : "",
+        quantity: modal.count,
+        totalValue: totalvalue
+    }
 
-    // }
-
-
-
+    cart.productsCart.push(productCart)
 }
 
 
