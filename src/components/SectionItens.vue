@@ -29,6 +29,7 @@ const addProductToCart = () => {
     }
 
     cart.productsCart.push(productCart)
+    showModal(false)
 }
 
 
