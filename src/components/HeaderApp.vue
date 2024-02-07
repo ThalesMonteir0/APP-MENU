@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router';
 import { useCartStore } from '../stores/CartStore';
 
 const cart = useCartStore()
     const props = defineProps({
         isOpen: Boolean,
-        valueCart: Number
     })
 
 </script>
@@ -19,14 +19,14 @@ const cart = useCartStore()
                 <span class="text-base font-medium text-gray-900 ml-3">{{props.isOpen ? "Aberto ​🟢" : "Fechado ​🔴​"}}​</span>
             </div>
             
-            <div class="flex items-center cursor-pointer">
+            <RouterLink to="/cart" class="flex items-center cursor-pointer">
             
                 <img class="ml-9" src="src/assets/icons/cart.svg" alt="carrinho">
                 <div class="relative bottom-3 flex justify-center" style="border: black solid 1px; border-radius: 2rem;width: 2rem;background-color: black;">
                     <span class="text-white">{{ cart.quantityProductsInCart }}</span>
                 </div>
 
-            </div>
+            </RouterLink>
 
         </div>
     </header>
