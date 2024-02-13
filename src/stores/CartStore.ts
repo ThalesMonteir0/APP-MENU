@@ -18,6 +18,16 @@ export const useCartStore = defineStore('cart', {
 
             return count
         },
+
+        valueTotalProductsInCart():number {
+            let count = 0
+            this.productsCart.forEach((item:ProductCart) => {
+                count += item.quantity * item.value
+            });
+            
+
+            return count
+        },
     },
     
     actions : {

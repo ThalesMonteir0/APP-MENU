@@ -21,11 +21,10 @@ const showModal = (emitValue: boolean) => {
 }
 
 const addProductToCart = () => {
-    let totalvalue = modal.count * modal.product.price!
     let productCart: ProductCart = {
         title: modal.product.title != undefined ? modal.product.title : "",
         quantity: modal.count,
-        totalValue: totalvalue
+        value: modal.product.price!
     }
 
     cart.productsCart.push(productCart)

@@ -8,5 +8,5 @@ export type Product = {
 export interface ProductCart {
     title: string
     quantity: number
-    totalValue: number
+    value: number
 }

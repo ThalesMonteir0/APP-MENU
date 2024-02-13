@@ -4,3 +4,10 @@ export const formatNumberToStringCurrency = (money: number): string =>  {
     
     return `R$ ${currencyFormated.split(",")[1].length === 1 ? currencyFormated+'0' : currencyFormated }`
 }
+
+export const formatStringToCurrency = (value: number) => { 
+    return value.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    })
+}
