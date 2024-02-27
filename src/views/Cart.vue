@@ -10,21 +10,27 @@
                      <button @click="product.quantity++" class="cursor-pointer">+</button>
                 </div>
             </div>
-            <div class="flex items-center">
-                <p class="text-xl text-black font-bold">Total:</p>
-                <p  class="ml-3 text-black text-lg">{{ formatStringToCurrency(cart.valueTotalProductsInCart) }}</p>
+            <div class="flex items-center justify-between">
+                <div class="flex">
+                    <p class="text-xl text-black font-bold">Total:</p>
+                    <p  class="ml-3 text-black text-lg">{{ formatStringToCurrency(cart.valueTotalProductsInCart) }}</p>
+                </div>
+                <div>
+                    <fwb-button size="lg" color="green" @click="redirectToPageCadastroOrFinalizaCompra">Comprar</fwb-button>
+                </div>
+               
             </div>
-           
-
         </section>
     </main>
     
 </template>
 
 <script setup lang="ts">
-import { useCartStore } from "../stores/CartStore.ts";
+import { useCartStore } from "../stores/CartStore";
 import { ProductCart } from "../states/productsState";
-import { formatStringToCurrency} from "../components/composables/useFormatString"
+import { formatStringToCurrency} from "../composables/useFormatString"
+import { FwbButton } from 'flowbite-vue'
+
     
 
 const cart = useCartStore()
@@ -33,6 +39,10 @@ const decrementItemCart = (selectProduct:ProductCart) => {
     if(selectProduct.quantity > 1){
         selectProduct.quantity--
     }
+}
+
+const redirectToPageCadastroOrFinalizaCompra = () => {
+
 }
 
 </script>

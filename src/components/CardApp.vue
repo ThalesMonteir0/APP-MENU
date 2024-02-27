@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Product } from '../states/productsState.ts';
-import {formatNumberToStringCurrency} from './composables/useFormatString.ts'
+import {formatNumberToStringCurrency} from '../composables/useFormatString'
 import { useModalStore } from '../stores/ModalStore';
 
 const props = defineProps({
@@ -47,3 +47,4 @@ const updateShowModalEmit = (product: Product) => {
 }
 </style>
 
+../composables/useFormatString.ts
