@@ -30,9 +30,10 @@ import { useCartStore } from "../stores/CartStore";
 import { ProductCart } from "../states/productsState";
 import { formatStringToCurrency} from "../composables/useFormatString"
 import { FwbButton } from 'flowbite-vue'
+import { verifyAddressInLocalStorage } from "../composables/localStorageService"
+import { useRouter } from 'vue-router';
 
-    
-
+const router = useRouter()
 const cart = useCartStore()
 
 const decrementItemCart = (selectProduct:ProductCart) => {
@@ -42,7 +43,11 @@ const decrementItemCart = (selectProduct:ProductCart) => {
 }
 
 const redirectToPageCadastroOrFinalizaCompra = () => {
-
+    if (verifyAddressInLocalStorage()) {
+        //logica de enviar pedido ao wpp
+        return
+    }
+    router.push({name: 'address'})
 }
 
 </script>
