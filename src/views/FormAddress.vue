@@ -1,13 +1,24 @@
 <script setup lang="ts">
 import { FwbInput, FwbTextarea  } from 'flowbite-vue'
 import { reactive } from 'vue';
+import cartao from '../assets/imgs/card.svg'
+import pix from '../assets/imgs/pix.svg'
+import dinheiro from '../assets/imgs/cash.svg'
+
 
 const formDataAddress = reactive({
     cep: '',
     numero: '',
     road: '',
-    complement: ''
+    complement: '',
+    typePayment: ''
 })
+
+const itensPayment = [
+    {name: "Pix", logo: pix, value: "pix", width: 70, height: 70},
+    {name: "Cartão", logo: cartao, value: "cartão", width: 50, height: 50},
+    {name: "Dinheiro", logo: dinheiro, value: "dinheiro fisico", width: 50, height: 50},
+]
 
 
 </script>
@@ -15,38 +26,70 @@ const formDataAddress = reactive({
 <template>
     <main class="w-full h-full flex justify-center">
         <section class="w-full" style="max-width: 1200px;">
-            <p class="text-2xl text-black font-bold mt-6">Cadastre seu Endereço</p>
+            <form>
+                <h1 class="text-2xl text-black font-bold mt-4">Seu Endereço</h1>
             <fwb-input
+                class="mt-1 mb-1"
                 v-model="formDataAddress.cep"
                 required
                 placeholder="Informe seu cep"
                 label="CEP"         
             />
             <fwb-input
+                class="mt-1 mb-1"
                 v-model="formDataAddress.numero"
                 required
                 placeholder="Informe sua rua/avenida"
                 label="Rua/Avenida"         
             />
             <fwb-input
+                class="mt-1 mb-1"
                 v-model="formDataAddress.road"
                 required
                 placeholder="Informe o numero da casa ou apt"
                 label="Número"         
             />
             <fwb-textarea
+                class="mt-1 mb-1"
                  v-model="formDataAddress.complement"
                  :rows="4"
                  label="Complemento"
               />
-            
 
+            </form>
+            <section>
+                <form>
+                    <h1 class="text-2xl text-black font-bold mt-3">Tipo de pagamento</h1>
+                    <div v-for="itemPayment in itensPayment">
+                        <div class="bg-white rounded flex items-center p-4"  style="min-height: 70px;">
+                           
+                                <input  type="radio" 
+                                        class="mr-4" 
+                                        :value="itemPayment.value" 
+                                        :id="`input-${itemPayment.name}`" 
+                                        name="inputTypePayment" 
+                                        v-model="formDataAddress.typePayment">
+                                <img :src="itemPayment.logo" 
+                                     :alt="`logo ${itemPayment.name}`" 
+                                     :width="itemPayment.width" 
+                                     :height="itemPayment.height">
+                                <label  :for="`input-${itemPayment.name}`" 
+                                        class="ml-3">{{ itemPayment.name }}
+                                </label>
+                        </div>
+                        <div class="separator"></div>
+                    </div>
+                </form>
+            </section>           
         </section>
-
     </main>
-    
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #a8adad;
+}
 
 </style>
