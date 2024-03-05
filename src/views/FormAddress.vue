@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { FwbInput, FwbTextarea,FwbButton  } from 'flowbite-vue'
-import { reactive } from 'vue';
+import { reactive, watch } from 'vue';
 import cartao from '../assets/imgs/card.svg'
 import pix from '../assets/imgs/pix.svg'
 import dinheiro from '../assets/imgs/cash.svg'
 import {useGetCepService} from '../services/cepService'
+import {verifyLengthCep} from '../composables/verifys'
 
 const formDataAddress = reactive({
     cep: '',
@@ -23,20 +24,24 @@ const itensPayment = [
     {name: "Dinheiro", logo: dinheiro, value: "dinheiro fisico", width: 50, height: 50},
 ]
 
+watch(() => formDataAddress.cep, () => {
+    if(verifyLengthCep(formDataAddress.cep)){
+        getCep(formDataAddress.cep)
+    }
+})
 
 
-const getCep = (cep:string) => {
-    console.log("oiii");
-    return
-    
+
+const getCep = (cep:string) => {    
     useGetCepService(cep).then((res:any) => {
-        res.data.forEach((element:any) => {
-            formDataAddress.road = element.logradouro
-            formDataAddress.city = element.localidade
-            formDataAddress.state = element.uf
-            formDataAddress.neighborhood = element.bairro
-            
-        });
+       if(res.data.erro){
+        return
+       }
+
+        formDataAddress.road = res.data.logradouro
+        formDataAddress.city = res.data.localidade
+        formDataAddress.state = res.data.uf
+        formDataAddress.neighborhood = res.data.bairro
 
     }).catch((err:any) => {
         console.error(err)
@@ -60,14 +65,14 @@ const getCep = (cep:string) => {
             />
             <fwb-input
                 class="mt-1 mb-1"
-                v-model="formDataAddress.number"
+                v-model="formDataAddress.road"
                 required
                 placeholder="Informe sua rua/avenida"
                 label="Rua/Avenida"         
             />
             <fwb-input
                 class="mt-1 mb-1"
-                v-model="formDataAddress.road"
+                v-model="formDataAddress.number"
                 required
                 placeholder="Informe o numero da casa ou apt"
                 label="Número"         
@@ -98,6 +103,7 @@ const getCep = (cep:string) => {
                  v-model="formDataAddress.complement"
                  :rows="4"
                  label="Complemento"
+                 placeholder="Informe alguma observação adicional sobre o lanche ou endereço!"
               />
 
             </form>
