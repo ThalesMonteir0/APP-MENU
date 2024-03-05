@@ -2,7 +2,8 @@
     <main class="w-full h-full flex justify-center">
         <section class="w-full mt-4" style="max-width: 1200px;">
             <p class="text-xl text-black font-bold">Seus itens:</p>
-            <div class=" bg-white rounded w-full mb-3 h-14 flex items-center justify-between" v-for="product in cart.productsCart">
+            <div class=" bg-white rounded w-full mb-3 h-14 flex items-center justify-between"
+                 v-for="product in cart.productsCart">
                 <span class="ml-2">{{ `Produto: ${product.title} `  }}</span>
                 <div class="btn-quantity mr-2">
                     <button @click="decrementItemCart(product)" class="cursor-pointer">-</button>
@@ -16,7 +17,7 @@
                     <p  class="ml-3 text-black text-lg">{{ formatStringToCurrency(cart.valueTotalProductsInCart) }}</p>
                 </div>
                 <div>
-                    <fwb-button size="lg" color="green" @click="redirectToPageCadastroOrFinalizaCompra">Comprar</fwb-button>
+                    <fwb-button size="lg" color="green" @click="redirectToPageCadastro">Comprar</fwb-button>
                 </div>
                
             </div>
@@ -30,7 +31,6 @@ import { useCartStore } from "../stores/CartStore";
 import { ProductCart } from "../states/productsState";
 import { formatStringToCurrency} from "../composables/useFormatString"
 import { FwbButton } from 'flowbite-vue'
-import { verifyAddressInLocalStorage } from "../composables/localStorageService"
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
@@ -42,11 +42,7 @@ const decrementItemCart = (selectProduct:ProductCart) => {
     }
 }
 
-const redirectToPageCadastroOrFinalizaCompra = () => {
-    if (verifyAddressInLocalStorage()) {
-        //logica de enviar pedido ao wpp
-        return
-    }
+const redirectToPageCadastro = () => {
     router.push({name: 'address'})
 }
 

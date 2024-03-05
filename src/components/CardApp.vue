@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Product } from '../states/productsState.ts';
-import {formatNumberToStringCurrency} from '../composables/useFormatString'
+import {formatStringToCurrency} from '../composables/useFormatString'
 import { useModalStore } from '../stores/ModalStore';
 
 const props = defineProps({
@@ -35,7 +35,7 @@ const updateShowModalEmit = (product: Product) => {
                 <span>{{ product.description }}</span>
 
                 <span style="display: flex; -webkit-box-flex: 1; flex-grow: 1; align-items: flex-end; width: 100%; ">
-                    Por apenas: {{formatNumberToStringCurrency(product.price) }}
+                    Por apenas: {{formatStringToCurrency(product.price) }}
                 </span>
             </div>
         </div>
@@ -46,5 +46,3 @@ const updateShowModalEmit = (product: Product) => {
     cursor: pointer;
 }
 </style>
-
-../composables/useFormatString.ts
