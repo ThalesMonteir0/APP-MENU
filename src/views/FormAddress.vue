@@ -13,8 +13,6 @@ const formDataAddress = reactive({
     road: '',
     complement: '',
     typePayment: '',
-    state: '',
-    city: '',
     neighborhood: ''
 })
 
@@ -39,8 +37,6 @@ const getCep = (cep:string) => {
        }
 
         formDataAddress.road = res.data.logradouro
-        formDataAddress.city = res.data.localidade
-        formDataAddress.state = res.data.uf
         formDataAddress.neighborhood = res.data.bairro
 
     }).catch((err:any) => {
@@ -84,20 +80,6 @@ const getCep = (cep:string) => {
                 placeholder="Informe o bairro"
                 label="Bairro"         
             />
-            <fwb-input
-                class="mt-1 mb-1"
-                v-model="formDataAddress.state"
-                required
-                placeholder="Informe o estado"
-                label="Estado"         
-            />
-            <fwb-input
-                class="mt-1 mb-1"
-                v-model="formDataAddress.city"
-                required
-                placeholder="Informe o nome da sua cidade"
-                label="Cidade"         
-            />
             <fwb-textarea
                 class="mt-1 mb-1"
                  v-model="formDataAddress.complement"
@@ -109,7 +91,7 @@ const getCep = (cep:string) => {
             </form>
             <section>
                 <form>
-                    <h1 class="text-2xl text-black font-bold mt-3">Tipo de pagamento</h1>
+                    <h1 class="text-2xl text-black font-bold mt-3 mb-3">Tipo de pagamento</h1>
                     <div v-for="itemPayment in itensPayment">
                         <div class="bg-white rounded flex items-center p-4"  style="min-height: 70px;">
                            
@@ -132,7 +114,7 @@ const getCep = (cep:string) => {
                 </form>
             </section>  
             <section class="flex justify-end mt-2 mb-2">
-                <FwbButton size="lg" color="green" @click="">Finalizar compra</FwbButton>
+                <FwbButton ty size="lg" color="green" @click="">Finalizar compra</FwbButton>
             </section>         
         </section>
     </main>
